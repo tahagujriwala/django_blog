@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+
+    <h1>{{ post.title }}</h1>
+    <p>By {{ post.author.username }} | {{ post.created_at }}</p>
+    <p>{{ post.content }}</p>
+
+    <hr>
+
+    <a href="{% url 'post_list' %}">← Back to Home</a>
+
+</body>
+</html>

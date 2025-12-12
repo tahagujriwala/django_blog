@@ -1,12 +1,26 @@
-<!-- templates/blog/post_list.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Blog - Home</title>
+    <title>Blog - Home</title>
 </head>
 <body>
-  <h1>Welcome to the Blog</h1>
-  <p>If you see this page, the project is working.</p>
+
+    <h1>All Posts</h1>
+
+    {% for post in posts %}
+        <div style="margin-bottom: 20px;">
+            <h2>{{ post.title }}</h2>
+            <p>By {{ post.author.username }} | {{ post.created_at }}</p>
+            <p>{{ post.content|truncatewords:20 }}</p>
+
+            <a href="{% url 'post_detail' post.id %}">
+                Read More
+            </a>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No posts created yet.</p>
+    {% endfor %}
+
 </body>
 </html>
